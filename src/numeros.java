@@ -14,56 +14,56 @@ public class NumerosPrimos {
     //LIstar los numeros según el numero de digitos indicado
     //Considero solo hasta numeros menores a 100000 (5 digitos), 
     //por el hecho de k buscar numeros primos a partir de 6 digitos, el proceso se hace muy lento.
-    public static boolean p = false;
+    public static boolean esPrimo = false;
 
     public static void main(String arg[]) {
-        int nD = 0;
-        int nd = 0;
-        nD = Integer.parseInt(arg[0]);
-        if (nD <= 0) {
+        int numeroDigitos = 0;
+        int numerod = 0;
+        numeroDigitos = Integer.parseInt(arg[0]);
+        if (numeroDigitos <= 0) {
             System.out.println("Ingrese como parámetro, un numero de digitos correcto (mayor que 0): ");
         }
-        for (int i = 1; i <= 99999; i++) {
-            int div = i;
-            int c = 0;
+        for (int numero = 1; numero <= 99999; numero++) {
+            int divisor = numero;
+            int contador = 0;
 
-            while (div != 0) {
-                div = div / 10;
-                c++;
+            while (divisor != 0) {
+                divisor = divisor / 10;
+                contador++;
             }
-            nd = c;
+            numerod = contador;
 
-            if (nd == nD) {
-                if (i < 4) {
-                    p = true;
+            if (numerod == numeroDigitos) {
+                if (numero < 4) {
+                    esPrimo = true;
                 } else {
-                    if (i % 2 == 0) {
-                        p = false;
+                    if (numero % 2 == 0) {
+                        esPrimo = false;
                     } else {
-                        int c1 = 0;
-                        int i1 = 1;
-                        int l = (i - 1) / 2;
-                        if (l % 2 == 0) {
-                            l--;
+                        int contador1 = 0;
+                        int contador2 = 1;
+                        int contador3 = (numero - 1) / 2;
+                        if (contador3 % 2 == 0) {
+                            contador3--;
                         }
-                        while (i1 <= l) {
-                            if (i % i1 == 0) {
-                                c1++;
+                        while (contador2 <= contador3) {
+                            if (numero % contador2 == 0) {
+                                contador1++;
                             }
-                            i1 += 2;
-                            if (c1 == 2) {
-                                i1 = l + 1;
+                            contador2 += 2;
+                            if (contador1 == 2) {
+                                contador2 = contador3 + 1;
                             }
                         }
 
-                        if (c1 == 1) {
-                            p = true;
+                        if (contador1 == 1) {
+                            esPrimo = true;
                         }
                     }
                 }
 
-                if (p == true) {
-                    System.out.println(i);
+                if (esPrimo == true) {
+                    System.out.println(numero);
                 }
             }
         }
